@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Copyright 2018 Aditya Karnad
+ 
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+ -->
+
+<cognito-configuration>
+
+	<!-- Define your test modules and environment specifications here -->
+	<testable-mods>
+		<testable-mod name="sampleWsMod" type="web service">
+			<environments>
+				<environment name="PROD">
+					<env-spec id="url" detail="https://wsurl.com/service?q=stuff" />
+				</environment>
+				<environment name="DEV">
+					<env-spec id="url" detail="https://wsurl.dev.com/service?q=stuff" />
+				</environment>
+			</environments>
+
+			<mod-specs>
+				<mod-spec id="acceptableDeviation" detail="100" />
+			</mod-specs>
+
+		</testable-mod>
+
+		<testable-mod name="sampleUiMod" type="user interface">
+			<environments>
+				<environment name="AITE">
+					<env-spec id="url" detail="blah-aite.com/showui" />
+				</environment>
+				<environment name="SITE">
+					<env-spec id="url" detail="blah-site.com/showui" />
+				</environment>
+			</environments>
+			<mod-specs>
+				<mod-spec id="acceptableDeviation" detail="100" />
+			</mod-specs>
+		</testable-mod>
+
+
+		<!-- MOds associated with Instruction parsing and and calculating output -->
+
+		<testable-mod name="sentenceParser" type="module">
+			<environments>
+				<environment name="DEV" />
+			</environments>
+
+			<mod-specs>
+				<mod-spec id="acceptableDeviation" detail="10" />
+			</mod-specs>
+		</testable-mod>
+	</testable-mods>
+
+
+
+
+	<report-generation path="C:/newscastertest-reports" />
+</cognito-configuration>
