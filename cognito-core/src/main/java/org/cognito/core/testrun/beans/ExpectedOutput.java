@@ -26,11 +26,12 @@ import org.apache.log4j.Logger;
 import org.cognito.core.TestContext;
 import org.cognito.core.exceptions.InvalidExpectedOutputException;
 
-//TODO Aditya: Complete this doc.
+
 /**
+ * An {@link ExpectedOutput} object is a test run output, but not an output derived from a test run execution.
+ * This output is instead read from an external source. <i>(Example: a file on the local machine)</i><br>
  * 
  * @author Aditya Karnad
- *
  */
 public class ExpectedOutput extends TestRunOutput {
 
@@ -167,12 +168,15 @@ public class ExpectedOutput extends TestRunOutput {
 			String line;
 
 			while ((line = bufferedReader.readLine()) != null) {
-
-				//If the current line defines a field in the expected output for the running scenario...
+				
 				if(line.startsWith(currentScenario)) {
 
-					//listOfFields.add(new ComparableField(readFieldId(line), readFieldValue(line)));
-					listOfFields.add(new ComparableField((String)readFieldFromOutput(line, FIELD_ID), readFieldFromOutput(line, FIELD_VALUE)));
+					listOfFields.add(
+							new ComparableField(
+									(String)readFieldFromOutput(line, FIELD_ID),
+									readFieldFromOutput(line, FIELD_VALUE)
+							)
+					);
 				}
 			}
 			reader.close();
@@ -185,7 +189,7 @@ public class ExpectedOutput extends TestRunOutput {
 		}
 	}
 
-
+/*
 	private Object readFieldValue(String line) {
 
 		line = line.substring(line.indexOf(':')+1);
@@ -218,7 +222,7 @@ public class ExpectedOutput extends TestRunOutput {
 
 		return id;
 	}
-
+*/
 	private boolean isNumeric(String arg)
 	{
 

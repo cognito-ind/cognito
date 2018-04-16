@@ -16,13 +16,17 @@
 package org.cognito.config.beans;
 
 /**
- * This class represents the Test Configuration.
+ * An instance of this type represents a Test Configuration.
  * @see SystemTestConfiguration
  * @see IntegrationTestConfiguration
  * @see RegressionTestConfiguration
- * @author aditya.karnad
+ * @author Aditya Karnad
  */
 public abstract class TestConfiguration {
 	
+	/**
+	 * Returns the environment detail as a <tt>String</tt>.
+	 * @return environment detail.
+	 */
 	public abstract String getEnvironmentsDetail();
 }

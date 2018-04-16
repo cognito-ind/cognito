@@ -18,19 +18,44 @@ package org.cognito.config.beans;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * An instance of this class contains information about a specific environment associated with a testable mod.
+ * @author Aditya Karnad
+ */
 public final class Environment {
 
+	/**
+	 * Environment name.
+	 */
 	private String name;
+	
+	/**
+	 * Environment specification.<br>
+	 * <i>Key-value pairs which can hold useful information about the environment.<br>
+	 * <b>Example:</b> Web-service URLs, etc.</i>
+	 */
 	private Map<String, String> environmentSpecification;
 
+	/**
+	 * Returns the environment name.
+	 * @return environment name.
+	 */
 	public String getName() {
 		return name;
 	}
-
+	
+	/**
+	 * Sets the environment name.
+	 * @param name represents the environment name.
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	/**
+	 * Returns the environment specifications as defined in the <tt>cognito-cfg.xml</tt> in a {@link Map}.
+	 * @return environment specification as a {@link Map}.
+	 */
 	public Map<String, String> getEnvironmentSpecification() {
 		
 		if (environmentSpecification == null) {
@@ -40,6 +65,10 @@ public final class Environment {
 		return environmentSpecification;
 	}
 
+	/**
+	 * Sets the environment specification.
+	 * @param environmentSpecification represents a {@link Map} containing environment specification.
+	 */
 	public void setEnvironmentSpecification(Map<String, String> environmentSpecification) {
 		this.environmentSpecification = environmentSpecification;
 	}

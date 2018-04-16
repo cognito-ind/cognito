@@ -62,9 +62,10 @@ public class GenericRecorder {
 	 * Returns String equivalents of the test types.
 	 * @param type represents the type indicator.
 	 * @return String equivalent of the test type passed as argument.
-	 * @see {@link RunnableTestSet#TYPE_SystemTest}
-	 * @see {@link RunnableTestSet#TYPE_RegressionTest}
-	 * @see {@link RunnableTestSet#TYPE_IntegrationTest}
+	 * 
+	 * @see RunnableTestSet#TYPE_SystemTest
+	 * @see RunnableTestSet#TYPE_RegressionTest
+	 * @see RunnableTestSet#TYPE_IntegrationTest
 	 */
 	public static String deriveTestType(byte type) {
 		

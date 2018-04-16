@@ -47,9 +47,10 @@ public @interface IntegrationTest {
 	String expectedOutputSource() default "";
 	
 	/**
-	 * PENDING
-	 * 
+	 * Represents the class that defines the execution of the integration test.<br>
+	 * <i><b>Note:</b> Please ensure the method
+	 * <tt>org.cognito.core.testrun.implementables.TestRunner.executeTest(TestRecord record)</tt>
+	 * is overridden to define what it means to execute a test run.</i>.
 	 */
-	//TODO Aditya: Complete this javadoc
 	Class<? extends CognitoImplementable> testIntegrator() default CognitoImplementable.class;
 }

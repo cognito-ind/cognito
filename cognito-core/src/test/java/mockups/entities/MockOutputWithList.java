@@ -22,7 +22,7 @@ import org.cognito.core.testrun.beans.TestRunOutput;
 
 /**
  * This is the mock run output representation for the {@link MultiTypeOutput} class.
- * @author aditya.karnad
+ * @author Aditya Karnad
  */
 public class MockOutputWithList extends TestRunOutput {
 	

@@ -44,22 +44,24 @@ public abstract class CognitiveVerifier implements CognitoImplementable {
 	private static Logger logger;
 	private static Map<String, Object> memory;
 	
-	//TODO Aditya: Pending Javadoc
 	/**
+	 * Commits an object to test memory (for later recall) with a reference key.
 	 * 
-	 * @param key
-	 * @param value
+	 * @param key represents the reference with which the argument is committed.
+	 * @param value represents the object to commit to memory.
 	 */
 	public static void commit(String key, Object value) {
 		
 		memory.put(key, value);
 	}
 	
-	//TODO Aditya: Pending Javadoc
+	
+
 	/**
+	 * Retrieves a committed object from the test memory.
 	 * 
-	 * @param key
-	 * @return
+	 * @param key represents the reference key with which the object was committed to test memory.
+	 * @return Committed object from the test memory.
 	 */
 	public static Object recall(String key) {
 		

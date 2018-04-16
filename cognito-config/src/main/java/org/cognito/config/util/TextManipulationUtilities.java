@@ -18,12 +18,32 @@ package org.cognito.config.util;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class contains utility methods for text manipulation.
+ * @author Neeraj Suthar
+ */
 public final class TextManipulationUtilities {
 	
+	/**
+	 * Indicates that the test run is a <b>System Test</b> run.
+	 */
 	public static final byte TYPE_SystemTest = 1;
+	
+	/**
+	 * Indicates that the test run is a <b>Regression Test</b> run.
+	 */
 	public static final byte TYPE_RegressionTest = 2;
+	
+	/**
+	 * Indicates that the test run is a <b>Integration Test</b> run.
+	 */
 	public static final byte TYPE_IntegrationTest = 3;
 	
+	/**
+	 * Returns the {@link String} equivalent of the test type.
+	 * @param type Test type as a <tt>byte</tt>.
+	 * @return String equivalent of the test type.
+	 */
 	public static String deriveTestTypeText(byte type) {
 		
 		String typeText = null;
@@ -44,6 +64,14 @@ public final class TextManipulationUtilities {
 		return typeText;
 	}
 	
+	/**
+	 * Returns <tt>true</tt> if the <tt>input</tt> and <tt>target</tt> arguments are equivalents.<br>
+	 * <i><b>For example:</b> "ModuleReadingXmlFile" and "Module Reading Xml File" and 
+	 * "module-reading-xml-file" are all equivalents of each other.
+	 * @param input represents the input String to be evaluated as an equivalent fo <tt>target</tt>.
+	 * @param target represents the target to match and determine if <tt>input</tt> is an equivalent.
+	 * @return true if the <tt>input</tt> and <tt>target</tt> arguments are equivalents.
+	 */
 	public static boolean isAcceptableEquivalent(String input, String target) {
 		
 		if(input.equalsIgnoreCase(target)) {
@@ -55,7 +83,7 @@ public final class TextManipulationUtilities {
 		if(isEqualWithInitials(input, target)){
 			equivalentStrings =true;
 		}
-		else if( isEqualIgnoringSpecialCharacters(input, target)){
+		else if(isEqualIgnoringSpecialCharacters(input, target)){
 			equivalentStrings = true;
 		}
 		else{
@@ -64,14 +92,6 @@ public final class TextManipulationUtilities {
 
 		return equivalentStrings;
 	}
-
-	/*private boolean isEqualIgnoringWhitespaces(String input, String target){
-		input=input.replace(" ", "");
-		if(input.equalsIgnoreCase(target)){
-			return true;
-		}
-		return false;
-	}*/
 
 
 	private static boolean isEqualWithInitials(String input, String target){

@@ -16,18 +16,24 @@
 package org.cognito.core.testrun.beans;
 
 import org.apache.log4j.Logger;
-import org.cognito.core.RunnableTestSet;
 import org.cognito.core.exceptions.CognitoTestExecutionException;
 import org.cognito.core.exceptions.ComparabilityException;
-import org.cognito.core.exceptions.TestRunInitializationException;
 
 /**
  * An object of this type is used to store a single output field of the output obtained from a test run.<br>
- * As the name suggests, this output field can be compared with other fields to analyze how much the value of a field deviates from another.
+ * As the name suggests, this output field can be compared with other fields to analyze how much the value of 
+ * one field deviates from another.
+ * 
  * @author Aditya Karnad
  */
 public class ComparableField {
 	
+	/**
+	 * Constructs a {@link ComparableField} instance with ID and Value set.
+	 * 
+	 * @param id represents the field identifier for the field.
+	 * @param value represents the value to be stored by the field.
+	 */
 	public ComparableField(String id, Object value) {
 		
 		this.id = id;
@@ -38,6 +44,7 @@ public class ComparableField {
 	 * This is a field identifier and should be unique for each field in the output.
 	 */
 	protected String id;
+	
 	/**
 	 * This holds the value of the field and can be of one of the following types:
 	 * <ul>
@@ -46,15 +53,36 @@ public class ComparableField {
 	 */
 	protected Object value;
 	
+	
+	/**
+	 * Returns the field identifier.
+	 * @return field identifier.
+	 */
 	public String getId() {
 		return id;
 	}
+	
+	/**
+	 * Sets the field identifier.
+	 * @param id represents the field identifier to be set.
+	 */
 	public void setId(String id) {
+		
 		this.id = id;
 	}
+	
+	/**
+	 * Returns the value stored in the field.
+	 * @return value stored in the field.
+	 */
 	public Object getValue() {
 		return value;
 	}
+	
+	/**
+	 * Sets the value of the field.
+	 * @param value represents the value to be set in the field.
+	 */
 	public void setValue(Object value) {
 		this.value = value;
 	}
@@ -62,6 +90,7 @@ public class ComparableField {
 	static {
 		logger = Logger.getLogger(ComparableField.class);
 	}
+	
 	private static Logger logger;
 	
 	
@@ -88,8 +117,6 @@ public class ComparableField {
 
 		Object thisField = this.getValue();
 		Object comparableField = field.getValue();
-		double stringComparisonPoint;
-		
 		char thisFieldArray[] ;
 		char comparableFieldArray[] ;
 

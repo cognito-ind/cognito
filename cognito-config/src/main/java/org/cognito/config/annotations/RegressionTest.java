@@ -30,8 +30,28 @@ import org.cognito.config.beans.CognitoImplementable;
 @Target(ElementType.TYPE)
 public @interface RegressionTest {
 
+	/**
+	 * Represents the "mod name", where a mod can be any module with well defined input, functionality and output.
+	 * <br><br><i><b>Note:</b> The mod name for the module would need to be specified in the <tt>cognito-cfg.xml</tt> file.</i>
+	 */
 	String modName() default "";
+	
+	/**
+	 * Represents the environment on which the tests are to be run.
+	 * <br><br><i><b>Note:</b> All the environments on which the mod is available for test runs would need to be specified 
+	 * in the <tt>cognito-cfg.xml</tt> file.</i>
+	 */
 	String targetEnvironment() default "";
+	
+	/**
+	 * Represents the environment which is known to be running the most correct version of the mod.
+	 * In most cases this would be the production environment.
+	 * <br><br><i><u>For example:</u> If a regression test on a module is required to find out if after some recent 
+	 * "technical only" changes released to an environment A (lower environment),  have had an undesirable "functional" impact
+	 * on the module, the <tt>targetEnvironment</tt> would be "A" and the <tt>benchMarkEnvironment</tt> would be 
+	 * Production / any other environment where the change has not yet been released.</i>
+	 * <br><br><i><b>Note:</b> All the environments on which the mod is available for test runs would need to be specified in the <tt>cognito-cfg.xml</tt> file.</i>
+	 */
 	String benchMarkEnvironment() default "";
 	
 	/**

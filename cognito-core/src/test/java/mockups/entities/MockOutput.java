@@ -20,6 +20,10 @@ import java.util.ArrayList;
 import org.cognito.core.testrun.beans.ComparableField;
 import org.cognito.core.testrun.beans.TestRunOutput;
 
+/**
+ * This is a mock output object
+ * @author Aditya Karnad
+ */
 public class MockOutput extends TestRunOutput {
 
 	

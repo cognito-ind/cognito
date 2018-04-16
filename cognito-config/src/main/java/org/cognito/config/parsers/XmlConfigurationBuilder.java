@@ -26,6 +26,12 @@ import org.cognito.config.beans.ReportGenerationConfiguration;
 import org.cognito.config.beans.TestableMod;
 import org.cognito.config.exceptions.CognitoConfigurationException;
 
+/**
+ * An instance of this class is capable of reading the application specific configuration file <tt>cognito-cfg.xml</tt>
+ * and build the {@link CognitoConfiguration} object from it.
+ * 
+ * @author Aditya Karnad
+ */
 public final class XmlConfigurationBuilder extends ConfigurationBuilder {
 
 
@@ -55,19 +61,26 @@ Keys available in XML are:
 	
 	private String configurationFileName;
 	
+	/**
+	 * Instantiates an {@link XmlConfigurationBuilder}.
+	 */
 	public XmlConfigurationBuilder() {
 
 		//Default setting
 		configurationFileName = "cognito-cfg.xml";
 	}
 	
-	public static final Logger logger;
+	private static final Logger logger;
 	
-	static{
+	static {
 		
 		logger = Logger.getLogger(XmlConfigurationBuilder.class);
 	}
 	
+	/**
+	 * Instantiates an {@link XmlConfigurationBuilder} given the configuration filename.
+	 * @param configurationFileName
+	 */
 	public XmlConfigurationBuilder(String configurationFileName) {
 
 		this.configurationFileName = configurationFileName;

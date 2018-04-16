@@ -15,6 +15,8 @@
 */
 package org.cognito.core.exceptions;
 
+import org.cognito.config.exceptions.CognitoConfigurationException;
+
 /**
  * Thrown when an internal exception is encountered during test run.
  * 
@@ -25,8 +27,15 @@ public class CognitoTestExecutionException extends GenericCognitoRuntimeExceptio
 	
 	private static final long serialVersionUID = 1219415767744827805L;
 
-	public CognitoTestExecutionException(String errorCode, Object... message) {
+	/**
+	 * Constructs a {@linkplain CognitoConfigurationException} using an error code and a message.
+	 * 
+	 * @param errorCode represents an error code.
+	 * @param args represents the arguments passed appropriate to the message corresponding to the error code 
+	 * passed as argument.
+	 */
+	public CognitoTestExecutionException(String errorCode, Object... args) {
 		
-		super(errorCode, message);
+		super(errorCode, args);
 	}
 }

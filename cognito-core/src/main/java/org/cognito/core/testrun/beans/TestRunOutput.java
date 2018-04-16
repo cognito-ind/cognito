@@ -18,13 +18,23 @@ package org.cognito.core.testrun.beans;
 import java.util.List;
 
 /**
- * This 
- * @author aditya.karnad
+ * An object of this type is used to wrap the output from the test run.
+ * The output from tests run on a module is fragmented into various fields ({@link ComparableField}) which have 
+ * a reference and a value.
+ * 
+ * @author Aditya Karnad
  */
 public abstract class TestRunOutput {
 	
+	/**
+	 * Represents the list of output fields of type {@link ComparableField}.
+	 */
 	protected List<ComparableField> outputFields;
 	
+	/**
+	 * Returns the list of fields associated with this instance of output.
+	 * @return List of output fields.
+	 */
 	public List<ComparableField> getOutputFields() {
 		
 		return this.outputFields;

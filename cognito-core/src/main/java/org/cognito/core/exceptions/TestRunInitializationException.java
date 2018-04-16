@@ -15,10 +15,22 @@
 */
 package org.cognito.core.exceptions;
 
+/**
+ * Thrown when an exception is encountered during test run initialization.
+ * 
+ * @author Aditya Karnad
+ */
 public class TestRunInitializationException extends GenericCognitoRuntimeException {
 	
 	private static final long serialVersionUID = 1154162914283976973L;
-
+	
+	/**
+	 * Constructs a {@link TestRunInitializationException} using an error code and a message.
+	 * 
+	 * @param errorCode represents an error code.
+	 * @param message represents the arguments passed appropriate to the message corresponding to the error code 
+	 * passed as argument.
+	 */
 	public TestRunInitializationException(String errorCode, Object... message) {
 		super(errorCode, message);
 	}

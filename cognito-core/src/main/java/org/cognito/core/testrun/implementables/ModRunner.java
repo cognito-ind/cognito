@@ -16,8 +16,13 @@
 package org.cognito.core.testrun.implementables;
 
 import org.cognito.config.beans.CognitoImplementable;
-import org.cognito.core.testrun.beans.TestRecord;
 
+/**
+ * The {@link ModRunner} interface should be implemented by any class whose instances are intended to 
+ * run test executions for System or Regression tests on the Cognito framework.
+ * @author Aditya Karnad
+ * @see TestIntegrator
+ */
 public interface ModRunner extends CognitoImplementable {
 
 	/**

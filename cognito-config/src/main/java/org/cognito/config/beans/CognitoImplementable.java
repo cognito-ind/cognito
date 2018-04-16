@@ -15,6 +15,11 @@
 */
 package org.cognito.config.beans;
 
+/**
+ * This is marker interface marking the core user-implementable components.<br><br>
+ * 
+ * @author Aditya Karnad
+ */
 public interface CognitoImplementable {
 
 }

@@ -26,7 +26,7 @@ import mockups.entities.MockOutputWithList;
 import mockups.entities.MultiTypeOutput;
 import mockups.entities.ValidMockOutput;
 
-public class MockRegresionTestableModOperator extends RegressionTestRunner implements ModRunner{
+public class MockRegresionTestableModOperator extends RegressionTestRunner implements ModRunner {
 
 	@Override
 	public String getModVersion() {
