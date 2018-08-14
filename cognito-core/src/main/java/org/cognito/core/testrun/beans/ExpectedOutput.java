@@ -28,7 +28,7 @@ import org.cognito.core.exceptions.InvalidExpectedOutputException;
 
 
 /**
- * An {@link ExpectedOutput} object is a test run output, but not an output derived from a test run execution.
+ * An instance of this class is a test run output, but not an output derived from a test run execution.
  * This output is instead read from an external source. <i>(Example: a file on the local machine)</i><br>
  * 
  * @author Aditya Karnad
@@ -154,9 +154,10 @@ public class ExpectedOutput extends TestRunOutput {
 
 		return scenarioName;
 	}
+	
 	protected void buildOutputFromFile(String expectedOutputSourcePath) {
 
-		logger.debug("Building an output object from the expected output source file...");
+		logger.debug("Building an output object from the expected output source file: " + expectedOutputSourcePath);
 		List <ComparableField> listOfFields = new ArrayList<ComparableField>();
 
 		String currentScenario = TestContext.getTestMetadata().getScenario();
