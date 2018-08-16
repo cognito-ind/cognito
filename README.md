@@ -1,6 +1,6 @@
 # Cognito
 
-##Introduction
+## Introduction
 After a careful feasibility study of whether or not test automation can work for you, you've decided to go with the automated approach and already know the benefits of automation.
 
 The next step is figuring out which tool or framework would be right for you.
@@ -28,52 +28,22 @@ Cognito is built as an extension to JUnit to run System, Regression and Integrat
 
 ### Prerequisites
 
-<PENDING>What things you need to install the software and how to install them
+All you need is Java 8+ (JDK) to make this work.
 
-```
-Give examples
-```
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Maven](https://maven.apache.org/) - Dependency Management
+### User Manual
+Please click [here] (https://github.com/cognito-ind/docs) to see a descriptive article on how to use Cognito.
 
 ## Contributing
 
 Please read [this](https://github.com/cognito-ind/docs) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Authors
-
-* **Aditya Karnad** [Cognito](https://github.com/cognito-ind)
-
 ## License
 
 This framework is licensed under the Apache License (version 2.0) - see the [LICENSE](LICENSE) file for details
 
+## Authors
+
+* **Aditya Karnad**
 ## Acknowledgments
 
 *A hat tip to my team, the EPC team of 2017, without who's help and support this would have taken a lot longer...*
