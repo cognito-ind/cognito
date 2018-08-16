@@ -31,7 +31,7 @@ Cognito is built as an extension to JUnit to run System, Regression and Integrat
 All you need is Java 8+ (JDK) to make this work.
 
 ### User Manual
-Please click [here] (https://github.com/cognito-ind/docs) to see a descriptive article on how to use Cognito.
+Please click [here](https://github.com/cognito-ind/cognito/wiki/User-Manual#user-manual) to see documentation on how to use Cognito.
 
 ## Contributing
 
