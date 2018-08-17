@@ -15,11 +15,23 @@
 */
 package org.cognito.core.exceptions;
 
-public class InvalidExpectedOutputException extends GenericCognitoException {
+/**
+ * Thrown when the expected output source file is scanned and the output is found to be in an unsupported format.
+ * 
+ * @author Aditya Karnad
+ */
+public class InvalidExpectedOutputException extends GenericCognitoRuntimeException {
 
 	
 	private static final long serialVersionUID = 695432318228824178L;
-
+	
+	/**
+	 * Constructs a {@link InvalidExpectedOutputException} using an error code and a message.
+	 * 
+	 * @param errorCode represents an error code.
+	 * @param messages represents the arguments passed appropriate to the message corresponding to the error code 
+	 * passed as argument.
+	 */
 	public InvalidExpectedOutputException(String errorCode, Object... messages) {
 		
 		super(errorCode, messages);

@@ -15,13 +15,24 @@
 */
 package org.cognito.core.exceptions;
 
-public class InvalidImplementableException extends GenericCognitoException {
+/**
+ * Thrown when some preliminary checks made by the Cognito framework against the implementables provided by users fail.
+ * 
+ * @author Aditya Karnad
+ */
+public class InvalidImplementableException extends GenericCognitoRuntimeException {
 	
 	private static final long serialVersionUID = -6875816335077391074L;
-
+	
+	/**
+	 * Constructs a {@link InvalidImplementableException} using an error code and a message.
+	 * 
+	 * @param errorCode represents an error code.
+	 * @param message represents the arguments passed appropriate to the message corresponding to the error code 
+	 * passed as argument.
+	 */
 	public InvalidImplementableException(String errorCode, Object... message) {
 		
 		super(errorCode, message);
 	}
-
 }

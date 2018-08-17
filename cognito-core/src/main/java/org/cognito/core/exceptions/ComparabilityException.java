@@ -15,17 +15,22 @@
 */
 package org.cognito.core.exceptions;
 
-public class ComparabilityException extends GenericCognitoException {
+/**
+ * Thrown when two equivalent outputs fields (which should be storing the same type of data) are found to be of 
+ * different types which results in the framework not being able to compare them with each other.
+ * 
+ * @author Aditya Karnad
+ */
+public class ComparabilityException extends GenericCognitoRuntimeException {
 	
 	private static final long serialVersionUID = -417617934046000817L;
 	
 	/**
-	 * Thrown when two equivalent outputs fields (which should be storing the same type of data) 
-	 * are found to be of different types which results in the framework not being able to compare 
-	 * them with each other.
+	 * Constructs a {@link ComparabilityException} using an error code and a message.
 	 * 
-	 * @param errorCode
-	 * @param message
+	 * @param errorCode represents an error code.
+	 * @param message represents the arguments passed appropriate to the message corresponding to the error code 
+	 * passed as argument.
 	 */
 	public ComparabilityException(String errorCode, Object... message) {
 		super(errorCode, message);

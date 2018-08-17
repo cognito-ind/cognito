@@ -15,14 +15,34 @@
 */
 package org.cognito.config.beans;
 
+/**
+ * An instance of this class provides information about the Regression test configuration as setup in 
+ * the <tt>cognito-cfg.xml</tt>.
+ * 
+ * @author Aditya Karnad
+ */
 public final class RegressionTestConfiguration extends SystemTestConfiguration {
 
+	/**
+	 * Environment on which the test is to be run on after it runs on the <tt>targetEnvironment</tt>. The second run 
+	 * on the <tt>benchmarkEnvironment</tt> would be compared to the first run and the <i>delta</i> would be reported by the framework.
+	 * The benchmark environment must also feature in the <tt>cognito-cfg.xml</tt>.
+	 */
 	private String benchmarkEnvironment;
 
+	/**
+	 * Returns the benchmark environment.
+	 * @return Benchmark Environment.
+	 */
 	public String getBenchmarkEnvironment() {
+		
 		return benchmarkEnvironment;
 	}
-
+	
+	/**
+	 * Sets the benchmark environment.
+	 * @param benchmarkEnvironment Benchmark Environment (should be defined in the <tt>cognito-cfg.xml</tt>).
+	 */
 	public void setBenchmarkEnvironment(String benchmarkEnvironment) {
 		this.benchmarkEnvironment = benchmarkEnvironment;
 	}

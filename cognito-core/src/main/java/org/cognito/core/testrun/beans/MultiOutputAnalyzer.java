@@ -30,6 +30,19 @@ import org.cognito.config.util.TextManipulationUtilities;
  */
 public class MultiOutputAnalyzer {
 	
+	
+	private List<FieldDeviation> fieldDeviations;
+	private double maximumDeviation;
+	
+	/**
+	 * Constructs a {@link MultiOutputAnalyzer} instance from the analysis derived from the <tt>target</tt> 
+	 * and <tt>benchmark</tt> {@link TestRunOutput} instances passed as arguments.
+	 * 
+	 * @param target represents the target {@link TestRunOutput} instance which 
+	 * is to be compared with a benchmark instance.
+	 * @param benchmark represents the benchmark {@link TestRunOutput} instance against which
+	 * the target instance is compared.
+	 */
 	public MultiOutputAnalyzer(TestRunOutput target, TestRunOutput benchmark) {
 		
 		maximumDeviation = 0;
@@ -75,21 +88,26 @@ public class MultiOutputAnalyzer {
 		}
 	}
 	
-	private List<FieldDeviation> fieldDeviations;
-	private double maximumDeviation;
 	
-	public List<FieldDeviation> getFieldDeviations() {
-		return fieldDeviations;
-	}
+//	public List<FieldDeviation> getFieldDeviations() {
+//		return fieldDeviations;
+//	}
+//	
+//	
+//	public void setFieldDeviations(List<FieldDeviation> fieldDeviations) {
+//		this.fieldDeviations = fieldDeviations;
+//	}
 	
-	public void setFieldDeviations(List fieldDeviations) {
-		this.fieldDeviations = fieldDeviations;
-	}
-	
+	/**
+	 * Returns the maximum deviation found between the target and benchmark fields read from all the 
+	 * {@link TestRunOutput} instances used to derive the analysis.
+	 * 
+	 * @return Maximum deviation found between target and benchmark fields.
+	 */
 	public double getMaximumDeviation() {
 		return maximumDeviation;
 	}
-
+	
 	@Override
 	public String toString() {
 		

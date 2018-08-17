@@ -16,8 +16,14 @@
 package org.cognito.core.testrun.implementables;
 
 import org.cognito.config.beans.CognitoImplementable;
-import org.cognito.core.testrun.beans.TestRecord;
 
+/**
+ * The {@link TestIntegrator} interface should be implemented by any class whose instances are intended to 
+ * run Integration test executions on the Cognito framework.
+ * 
+ * @author Aditya Karnad
+ * @see ModRunner
+ */
 public interface TestIntegrator extends CognitoImplementable {
 	
 	/**
@@ -25,5 +31,4 @@ public interface TestIntegrator extends CognitoImplementable {
 	 * @return String representing the current version of the target integration (configuration).
 	 */
 	public abstract String getVersion();
-
 }

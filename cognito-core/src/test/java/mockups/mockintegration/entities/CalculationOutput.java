@@ -20,6 +20,11 @@ import java.util.ArrayList;
 import org.cognito.core.testrun.beans.ComparableField;
 import org.cognito.core.testrun.beans.TestRunOutput;
 
+/**
+ * Mock Output type for test.
+ * 
+ * @author Aditya Karnad
+ */
 public class CalculationOutput extends TestRunOutput {
 
 	@Override

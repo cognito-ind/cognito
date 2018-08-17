@@ -18,11 +18,28 @@ package org.cognito.config.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * An instance of this class provides information about the Integration test configuration as setup in 
+ * the <tt>cognito-cfg.xml</tt>.
+ * 
+ * @author Aditya Karnad
+ */
 public final class IntegrationTestConfiguration extends TestConfiguration {
 
+	/**
+	 * List of module instances ({@link ModInstance}) which participate in the Integration test.
+	 */
 	private List<ModInstance> participantMods;
+	
+	/**
+	 * Represents the file from which the expected output should be read during test run.
+	 */
 	private String expectedOutputSource;
 
+	/**
+	 * Returns {@link List} of {@link ModInstance}s which participate in the test.
+	 * @return participant modules.
+	 */
 	public List<ModInstance> getParticipantMods() {
 		
 		if(participantMods == null) {
@@ -31,14 +48,26 @@ public final class IntegrationTestConfiguration extends TestConfiguration {
 		return participantMods;
 	}
 
+	/**
+	 * Sets the participant modules which would participate in the test.
+	 * @param participantMods
+	 */
 	public void setParticipantMods(List<ModInstance> participantMods) {
 		this.participantMods = participantMods;
 	}
 	
+	/**
+	 * Returns the file and path from which the expected output should be read during test run.
+	 * @return Expected output source file path.
+	 */
 	public String getExpectedOutputSource() {
 		return expectedOutputSource;
 	}
-
+	
+	/**
+	 * Sets the file and path from which the expected output should be read during test run.
+	 * @param expectedOutputSource String file path of output source
+	 */
 	public void setExpectedOutputSource(String expectedOutputSource) {
 		this.expectedOutputSource = expectedOutputSource;
 	}
@@ -49,12 +78,12 @@ public final class IntegrationTestConfiguration extends TestConfiguration {
 		String configText = "\nINTGR-TEST CONFIG";
 		configText = configText + "\n\tPARTICIPANT MODS:";
 		for (ModInstance modInstance : getParticipantMods()) {
-			configText += modInstance;
 			
+			configText += modInstance;
 		}
 		return configText;
 	}
-
+	
 	@Override
 	public String getEnvironmentsDetail() {
 		

@@ -19,6 +19,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * An instance of this class provides information about the application specific configuration.
+ * 
+ * @author Aditya Karnad
+ */
 public final class CognitoConfiguration implements Serializable {
 
 	private static final long serialVersionUID = 863441141289854597L;
@@ -28,6 +34,10 @@ public final class CognitoConfiguration implements Serializable {
 	private List <String> environmentNames = null;
 	private ReportGenerationConfiguration reportGenerationConfiguration;
 	
+	/**
+	 * Returns a list of all testable mods defined in the <tt>cognito-cfg.xml</tt>.
+	 * @return list of testable mods.
+	 */
 	public List<TestableMod> getTestableMods() {
 
 		if (testableMods == null) {
@@ -36,15 +46,21 @@ public final class CognitoConfiguration implements Serializable {
 		}
 		return testableMods;
 	}
-
-	public void setTestableMods(List<TestableMod> testableMods) {
-		this.testableMods = testableMods;
-	}
-
+	
+	
+	/**
+	 * Returns an object containing report generation configuration information.
+	 * @return report generation configuration.
+	 */
 	public ReportGenerationConfiguration getReportGenerationConfiguration() {
 		return reportGenerationConfiguration;
 	}
-
+	
+	/**
+	 * Sets the report generation configuration.
+	 * @param reportGenerationConfiguration represents an object containing report generation configuration information.
+	 * @see ReportGenerationConfiguration
+	 */
 	public void setReportGenerationConfiguration(ReportGenerationConfiguration reportGenerationConfiguration) {
 		this.reportGenerationConfiguration = reportGenerationConfiguration;
 	}

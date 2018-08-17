@@ -23,6 +23,13 @@ import org.cognito.config.beans.TestableMod;
 import org.cognito.config.exceptions.CognitoConfigurationException;
 import org.cognito.config.exceptions.InvalidConfigurationException;
 
+/**
+ * The sub-classes of this class are capable of reading various formats of application specific configuration and 
+ * build the {@link CognitoConfiguration} object from it.<br>
+ * <i><b>Known Sub-classes:</b> {@link XmlConfigurationBuilder}</i>
+ * 
+ * @author Aditya Karnad
+ */
 public abstract class ConfigurationBuilder {
 	
 	static {
@@ -34,7 +41,10 @@ public abstract class ConfigurationBuilder {
 	protected CognitoConfiguration configuration;
 	
 	
-	public ConfigurationBuilder () {
+	/**
+	 * Instantiates a {@link ConfigurationBuilder}.
+	 */
+	public ConfigurationBuilder() {
 		
 		if(referenceExists) {
 			
@@ -45,6 +55,11 @@ public abstract class ConfigurationBuilder {
 		}
 	}
 	
+	/**
+	 * Builds and then returns the {@link CognitoConfiguration} instance after validating it.
+	 * @return A valid configuration ({@link CognitoConfiguration} instance)
+	 * @throws CognitoConfigurationException
+	 */
 	public final CognitoConfiguration buildConfiguration() throws CognitoConfigurationException {
 		
 		logger.debug("Building Configuration.");
@@ -54,8 +69,17 @@ public abstract class ConfigurationBuilder {
 		return configuration;
 	}
 	
+	/**
+	 * Reads the configuration.
+	 * @throws CognitoConfigurationException
+	 */
 	protected abstract void readConfiguration() throws CognitoConfigurationException;
 	
+	
+	/**
+	 * Validates the configuration which was read.
+	 * @throws InvalidConfigurationException Thrown when configuration validation fails.
+	 */
 	private void validateConfiguration() throws InvalidConfigurationException {
 		logger.debug("Validating Configuration.");
 		
@@ -85,12 +109,11 @@ public abstract class ConfigurationBuilder {
 		 */
 		 logger.info("Validating Configuration... Complete");
 	}
-
+	
 	private void validateReportGenPath() throws InvalidConfigurationException {
 		logger.debug("Validating Report Generation Path.");
 		
 		if(configuration.getReportGenerationConfiguration().getReportGenerationPath()==""){
-			//System.err.println("WARNING : Result Generation Path is Empty");
 			throw new InvalidConfigurationException("NoConfigPath", " thrown at org.cognito.config.parsers."
 					+ "ConfigurationBuilder.validateReportGenPath"
 					+ "(CognitoConfiguration config) throws InvalidConfigurationException");

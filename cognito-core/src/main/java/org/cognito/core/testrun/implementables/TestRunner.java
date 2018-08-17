@@ -23,6 +23,13 @@ import org.cognito.core.testrun.beans.MultiOutputAnalyzer;
 import org.cognito.core.testrun.beans.TestRecord;
 import org.cognito.core.testrun.beans.TestRunOutput;
 
+
+/**
+ * This class represents a component which runs a test.<br>
+ * <i>The implementation for the test execution would have to be provided by the user.</i>
+ * 
+ * @author Aditya Karnad
+ */
 public abstract class TestRunner implements CognitoImplementable {
 	
 	/**
@@ -70,7 +77,8 @@ public abstract class TestRunner implements CognitoImplementable {
 	/**
 	 * This method executes the test on the mod.
 	 * <br>
-	 * <i><b>Note:</b> The implementation for this method needs to be provided by the user.</i>
+	 * <i><b>Note:</b> The implementation for this method needs to be provided by the user in a way which 
+	 * ensures the output from the test execution is stored in the {@link TestRecord}.</i>
 	 * @param record
 	 */
 	protected abstract void executeTest(TestRecord record);

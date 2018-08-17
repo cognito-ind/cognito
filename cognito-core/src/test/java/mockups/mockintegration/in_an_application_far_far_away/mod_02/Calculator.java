@@ -20,11 +20,18 @@ import java.util.List;
 import mockups.mockintegration.in_an_application_far_far_away.mod_01.SentenceParser;
 
 /**
- * This calculator calculates the resulting int value from the operation details provided in the request.
+ * This calculator calculates the resulting Integer value from the operation details provided in the request.
+ * 
  * @author Natasha Panchbhai
  */
 public class Calculator {
 
+	/**
+	 * Calculates the resulting Integer value from the operation details provided in the request.
+	 * @param request
+	 * @return Calculated result based on the {@link CalculatorRequest} argument passed.
+	 * @throws InvalidInstructionException
+	 */
 	public int calculate(CalculatorRequest request) throws InvalidInstructionException {
 		
 		validateRequest(request);

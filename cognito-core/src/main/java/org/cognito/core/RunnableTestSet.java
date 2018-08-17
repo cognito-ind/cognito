@@ -21,9 +21,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.cognito.config.annotations.IntegrationTest;
@@ -46,10 +43,10 @@ import org.cognito.core.testrun.beans.TestRecord;
 import org.cognito.core.testrun.beans.TestRunOutput;
 import org.cognito.core.testrun.implementables.CognitiveVerifier;
 import org.cognito.core.testrun.implementables.ModRunner;
-import org.cognito.core.testrun.implementables.TestRunner;
 import org.cognito.core.testrun.implementables.RegressionTestRunner;
 import org.cognito.core.testrun.implementables.SystemTestRunner;
 import org.cognito.core.testrun.implementables.TestIntegrator;
+import org.cognito.core.testrun.implementables.TestRunner;
 import org.cognito.core.util.recorders.GenericRecorder;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -63,7 +60,9 @@ import org.junit.rules.TestName;
  * This class should be extended to form all test-sets supported by Cognito.
  * 
  * @author Aditya Karnad
- * @see {@link SystemTest}, {@link IntegrationTest}, {@link RegressionTest}
+ * @see SystemTest
+ * @see IntegrationTest
+ * @see RegressionTest
  */
 
 public abstract class RunnableTestSet {
@@ -73,18 +72,54 @@ public abstract class RunnableTestSet {
 	}
 	private static Logger logger;
 	
+	/**
+	 * Indicates the type of test to be a System Test.
+	 */
 	public static final byte TYPE_SystemTest = 1;
-	
+	/**
+	 * Indicates the type of test to be a Regression Test.
+	 */
 	public static final byte TYPE_RegressionTest = 2;
+	/**
+	 * Indicates the type of test to be a Integration Test.
+	 */
 	public static final byte TYPE_IntegrationTest = 3;
-	private static final byte RECORD_AS_TestLog = 1;
 	
+	private static final byte RECORD_AS_TestLog = 1;
 	private static final byte RECORD_AS_CognitiveVerificationLog = 2;
+	
+	
+	
+	private CognitoConfiguration configuration;
+	
+	protected TestRecord record;
+	
+	protected TestRunner testRunner;
+	
+	private boolean cognitiveVerifierDefined;
+	
+	/**
+	 * Reference to the current test
+	 */
+	@Rule
+	public TestName testName = new TestName();
+	
+	
+	/**
+	 * Triggers the finalization of test run which entails:
+	 * <ul>
+	 * <li>recording of test log to a file and</li>
+	 * <li>recording details of cognitive failures if any were encountered during test run.</li>
+	 * </ul>
+	 * @throws CognitoConfigurationException 
+	 */
 	@AfterClass
 	public static final void finalizeTest() throws CognitoConfigurationException {
 		
 		logger.debug("Recording test log.");
-		System.out.println(TestContext.getTestMetadata().getTestLog()); //TODO Remove this sysout after test
+		
+		System.out.println(TestContext.getTestMetadata().getTestLog());
+		
 		//Recording the test log
 		record(TestContext.getTestMetadata().getTestLog().toString(), RECORD_AS_TestLog);
 		logger.info("Recording test log... Complete.");
@@ -175,6 +210,7 @@ public abstract class RunnableTestSet {
 		String path = TestContext.getConfiguration().getReportGenerationConfiguration().getReportGenerationPath();
 		String filename = 
 				TextManipulationUtilities.deriveTestTypeText(TestContext.getTestMetadata().getType());
+		
 		if (recordAs == RECORD_AS_TestLog) {
 			
 			filename = filename.concat("_TestLog_");
@@ -210,16 +246,7 @@ public abstract class RunnableTestSet {
 		}
 	}
 	
-	private CognitoConfiguration configuration;
-	
-	protected TestRecord record;
-	
-	protected TestRunner testRunner;
-	
-	private boolean cognitiveVerifierDefined;
-	
-	@Rule
-	public TestName testName = new TestName();
+
 	
 	
 	
@@ -464,8 +491,7 @@ public abstract class RunnableTestSet {
 	private void runAndRecordIntegrationTest() {
 		
 		IntegrationTestConfiguration config = (IntegrationTestConfiguration) TestContext.getTestMetadata().getTestConfiguration();
-		List<ModInstance> mods = config.getParticipantMods();
-		//TODO Aditya: To be continued...
+//		List<ModInstance> mods = config.getParticipantMods();
 		
 		StringBuffer testLog = TestContext.getTestMetadata().getTestLog();
 		
@@ -572,6 +598,10 @@ public abstract class RunnableTestSet {
 		TestContext.getTestMetadata().setCognitiveVerificationFailureLog(null);
 	}
 
+	/**
+	 * Runs the test and records the test log to a flat file, details of which are configured 
+	 * in the "<tt>report-generation</tt>" field of the XML Cognito configuration.
+	 */
 	@After
 	public final void runAndRecordTest() {
 		
@@ -611,16 +641,7 @@ public abstract class RunnableTestSet {
 		
 		logger.info("Run and record test... Complete");
 	}
-
-//	protected void runTestOnConfiguredModule(
-//			Class<? extends CognitoImplementable> moduleOperator,
-//			TestRecord record)
-//			throws ReflectiveOperationException {
-//		
-//		TestRunner operator = (TestRunner) moduleOperator.newInstance();
-//		operator.runTest(record);
-//		
-//	}
+	
 
 	/**
 	 * Runs all the methods annotated with the {@link Verification} annotation.
@@ -656,9 +677,11 @@ public abstract class RunnableTestSet {
 				throw new CognitoTestExecutionException("UnknownException", e.getMessage());
 			}
 		}
-		
 	}
 	
+	/**
+	 * Sets up the test before run.
+	 */
 	@Before
 	public final void setupTest() {
 		

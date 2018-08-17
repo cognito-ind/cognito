@@ -15,14 +15,28 @@
 */
 package org.cognito.config.beans;
 
+/**
+ * An instance of this class provides information about the report generation configuration as setup in 
+ * the <tt>cognito-cfg.xml</tt>.
+ * 
+ * @author Aditya Karnad
+ */
 public final class ReportGenerationConfiguration {
 
 	private String reportGenerationPath;
 
+	/**
+	 * Returns the path where the test reports are generated.
+	 * @return test report generation path.
+	 */
 	public String getReportGenerationPath() {
 		return reportGenerationPath;
 	}
 	
+	/**
+	 * Sets the path where the test reports are generated.
+	 * @param reportGenerationPath represents the absolute test report generation path.
+	 */
 	public void setReportGenerationPath(String reportGenerationPath) {
 		this.reportGenerationPath = reportGenerationPath;
 	}

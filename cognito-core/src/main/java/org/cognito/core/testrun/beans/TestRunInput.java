@@ -15,23 +15,46 @@
 */
 package org.cognito.core.testrun.beans;
 
+
+/**
+ * An object of this type is used to wrap the input fed to the test run.
+ * 
+ * @see TestRunInput#modInput
+ * @author Aditya Karnad
+ */
 public abstract class TestRunInput {
 	
+	/**
+	 * Represents the module input / test input which could be of any generic type.
+	 */
 	private Object modInput;
 
+	/**
+	 * Returns the input fed to the test run.
+	 * @return module input
+	 */
 	public Object getModInput() {
 		return modInput;
 	}
-
+	
+	/**
+	 * Sets the input fed to the test run.
+	 * @param modInput represents the module input.
+	 */
 	public void setModInput(Object modInput) {
 		this.modInput = modInput;
 	}
 	
+	/**
+	 * Return the module input as a formatted String as per test requirement.
+	 * @return returns the module input formatted as a String.
+	 */
 	public abstract String getFormattedStringEquivalent();
 	
 	@Override
 	public String toString() {
 		
 		return modInput.toString();
+		//TODO should this return getFormattedStringEquivalent()?
 	}
 }

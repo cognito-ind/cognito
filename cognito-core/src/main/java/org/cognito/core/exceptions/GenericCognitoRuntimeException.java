@@ -22,6 +22,11 @@ import java.util.ResourceBundle;
 
 import org.apache.log4j.Logger;
 
+/**
+ * Thrown when an unknown exception is encountered within the Cognito Framework.
+ * 
+ * @author Aditya Karnad
+ */
 public class GenericCognitoRuntimeException extends RuntimeException {
 	
 	static {
@@ -31,6 +36,14 @@ public class GenericCognitoRuntimeException extends RuntimeException {
 	private static final long serialVersionUID = -7112745799395954259L;
 	private static ResourceBundle errors = ResourceBundle.getBundle("cognito-core-errors");
 
+	
+	/**
+	 * Constructs a {@link GenericCognitoRuntimeException} using an error code and a message.
+	 * 
+	 * @param errorCode represents an error code.
+	 * @param message represents the arguments passed appropriate to the message corresponding to the error code 
+	 * passed as argument.
+	 */
 	public GenericCognitoRuntimeException(String errorCode, Object... message) {
 		
 		super(MessageFormat.format(errors.getString(errorCode), message));

@@ -20,6 +20,11 @@ import java.util.Map;
 import org.cognito.config.beans.SystemTestConfiguration;
 import org.cognito.core.TestContext;
 
+/**
+ * This class represents a component which runs a Regression test.<br>
+ * <i>The implementation for the test execution would have to be provided by the user.</i>
+ * @author Aditya Karnad
+ */
 public abstract class RegressionTestRunner extends SystemTestRunner{
 	
 	

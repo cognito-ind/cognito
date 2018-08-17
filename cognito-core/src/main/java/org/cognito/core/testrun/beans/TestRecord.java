@@ -16,10 +16,10 @@
 package org.cognito.core.testrun.beans;
 
 /**
- * An object of this type would contain the integral components to the test run.
+ * An instance of this type would contain the test input ({@link TestRunInput}) and 
+ * test output ({@link TestRunOutput}) that are associated with a test run.
  * 
  * @author Aditya Karnad
- *
  */
 public final class TestRecord {
 	
@@ -27,24 +27,52 @@ public final class TestRecord {
 	protected TestRunOutput testRunOutput;
 	protected TestRunOutput benchmarkOutput=null;
 	
-	
+	/**
+	 * Returns the test run input associated with the test.
+	 * @return Test run input as {@link TestRunInput}.
+	 */
 	public TestRunInput getTestRunInput() {
 		return testRunInput;
 	}
+	
+	/**
+	 * Sets the test run input associated with the test.
+	 * @param testRunInput represents the test run input as {@link TestRunInput}
+	 */
 	public void setTestRunInput(TestRunInput testRunInput) {
 		this.testRunInput = testRunInput;
 	}
+	
+	/**
+	 * Returns the test run output associated with the test.
+	 * @return Test run output as {@link TestRunOutput}.
+	 */
 	public TestRunOutput getTestRunOutput() {
 		return testRunOutput;
 	}
+	
+	/**
+	 * Sets the test run output associated with the test.
+	 * @param testRunOutput represents the test run output as {@link TestRunOutput}
+	 */
 	public void setTestRunOutput(TestRunOutput testRunOutput) {
 		this.testRunOutput = testRunOutput;
 	}
+	
+	/**
+	 * Returns the benchmark output (if available).
+	 * @return benchmark output as {@link TestRunOutput}.
+	 */
 	public TestRunOutput getBenchmarkOutput() {
 		return benchmarkOutput;
 	}
-	public void setBenchmarkOutput(TestRunOutput expectedOutput) {
-		this.benchmarkOutput = expectedOutput;
+	
+	/**
+	 * Sets the benchmark output.
+	 * @param output represents benchmark output as {@link TestRunOutput}.
+	 */
+	public void setBenchmarkOutput(TestRunOutput output) {
+		this.benchmarkOutput = output;
 	}
 	
 	@Override

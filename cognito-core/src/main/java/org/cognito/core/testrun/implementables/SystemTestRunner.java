@@ -20,10 +20,16 @@ import java.util.Map;
 import org.cognito.config.beans.SystemTestConfiguration;
 import org.cognito.core.TestContext;
 
+/**
+ * This class represents a component which runs a System test.<br>
+ * <i>The implementation for the test execution would have to be provided by the user.</i>
+ * @author Aditya Karnad
+ */
 public abstract class SystemTestRunner extends TestRunner implements ModRunner {
 	
 	/**
-	 * Returns the <tt>Map</tt> of environment specifications for the configured mod instance <i>(Module -> Target Environment)</i>.
+	 * Returns the <tt>Map</tt> of environment specifications for the configured mod 
+	 * instance <i>(Module -> Target Environment)</i>.
 	 * @return <tt>Map</tt> of environment specifications
 	 */
 	public final Map<String, String> getTargetEnvironmentSpecifications() {

@@ -20,7 +20,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * This class parses english instructions to add, subtract, multiply and divide numbers.
+ * This class parses English instructions to add, subtract, multiply and divide numbers.
  * 
  * @author Neeraj Suthar
  */
@@ -28,15 +28,28 @@ public class SentenceParser {
 
 	
 	private static final String[] ops = {"sum", "difference", "product","divided by"};
+	
+	/**
+	 * Represents the "Addition / Summation" operation.
+	 */
 	public static final byte OPR_SUM = 1;
+	/**
+	 * Represents the "Subtraction / Difference" operation.
+	 */
 	public static final byte OPR_DIFF = 2;
+	/**
+	 * Represents the "Multiplication / Product" operation.
+	 */
 	public static final byte OPR_PROD = 3;
+	/**
+	 * Represents the "Division" operation.
+	 */
 	public static final byte OPR_DIV = 4;
 	
 	/**
 	 * Returns the operation requested on the instruction.
 	 * @param input represents the instruction argument passed.
-	 * @return the byte equivalent to operation requested.
+	 * @return The byte equivalent to operation requested.
 	 *
 	 */
 	public byte getOperation(String input) {

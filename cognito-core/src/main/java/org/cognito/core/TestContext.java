@@ -23,6 +23,12 @@ import org.cognito.config.parsers.XmlConfigurationBuilder;
 import org.cognito.core.exceptions.GenericCognitoRuntimeException;
 import org.cognito.core.testrun.beans.TestMetadata;
 
+/**
+ * An instance of this class provides the configuration information {@link CognitoConfiguration} and 
+ * the test metadata information {@link TestMetadata}.
+ * 
+ * @author Aditya Karnad
+ */
 public final class TestContext {
 	
 	static {
@@ -46,22 +52,31 @@ public final class TestContext {
 	private static CognitoConfiguration configuration;
 	private static TestMetadata testMetadata;
 	
-	public static CognitoConfiguration getConfiguration() 
-			throws CognitoConfigurationException {
+	/**
+	 * Reads Cognito's configuration file from the classpath and returns the <tt>CognitoConfiguration</tt> instance.
+	 * 
+	 * @return <tt>CognitoConfiguration</tt> instance read from the configuration file.
+	 * @throws CognitoConfigurationException
+	 */
+	public static CognitoConfiguration getConfiguration() throws CognitoConfigurationException {
 		
 		logger.info("Fetching Configuration.");
+		
 		if (configuration == null) {
 			
-			configuration = new XmlConfigurationBuilder()
-									.buildConfiguration();
+			configuration = new XmlConfigurationBuilder().buildConfiguration();
 		}
 		logger.info("Fetching Configuration... Complete");
 		
 		return configuration;
 	}
 	
+	
+	/**
+	 * Returns the {@link TestMetadata} instance.
+	 * @return {@link TestMetadata} instance.
+	 */
 	public static TestMetadata getTestMetadata() {
-//			throws CognitoConfigurationException {
 		
 		logger.info("Fetching Test Metadata.");
 		if (testMetadata == null) {
@@ -73,6 +88,9 @@ public final class TestContext {
 		return testMetadata;
 	}
 	
+	/**
+	 * Resets the {@link TestMetadata} instance.
+	 */
 	public static void resetTestConfiguration() {
 		
 		logger.info("Resetting Test Configuration.");

@@ -23,6 +23,11 @@ import java.util.ResourceBundle;
 import org.apache.log4j.Logger;
 import org.cognito.config.parsers.XmlConfigurationBuilder;
 
+/**
+ * Thrown when a generic configuration exception is encountered on Cognito.
+ * 
+ * @author Aditya Karnad
+ */
 public class CognitoConfigurationException extends Exception {
 	
 	static {
@@ -31,16 +36,24 @@ public class CognitoConfigurationException extends Exception {
 	private static Logger logger;
 	private static final long serialVersionUID = 8997398665222908309L;
 	private static ResourceBundle errors = ResourceBundle.getBundle("cognito-config-errors");
-
-	public CognitoConfigurationException(String errorCode, String... message) {
-
-		super(MessageFormat.format(errors.getString(errorCode), message));
+	
+	/**
+	 * Constructs a {@linkplain CognitoConfigurationException} using an error code and a message.
+	 * 
+	 * @param errorCode represents an error code.
+	 * @param args represents the arguments passed appropriate to the message corresponding to the error code 
+	 * passed as argument.
+	 */
+	public CognitoConfigurationException(String errorCode, Object... args) {
+		
+		//TODO Aditya: Look into the type mismatch warning...
+		super(MessageFormat.format(errors.getString(errorCode), args));
 		
 		StringWriter stringWriter = new StringWriter();
 		printStackTrace(new PrintWriter(stringWriter));
 
 		StringBuffer buffer = new StringBuffer(
-				MessageFormat.format(errors.getString(errorCode), message));
+				MessageFormat.format(errors.getString(errorCode), args));
 		
 		buffer.append(System.lineSeparator()+ System.lineSeparator());
 		buffer.append("******************* STACK TRACE *******************");
